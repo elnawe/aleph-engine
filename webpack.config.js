@@ -19,11 +19,15 @@ module.exports = {
     ],
     output: {
         path: BUILD_DIR,
-        filename: [name].js,
+        filename: '[name].js',
         publicPath: '/'
     },
     plugins: [
-
+        new HtmlWebpackPlugin({
+            template: path.join(UI_DIR, 'index.html'),
+            inject: 'body',
+            filename: 'index.html'
+        })
     ],
     module: {
         loaders: [
