@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/elnawe/react-redux-cms/issues"
   },
-  "homepage": "https://github.com/elnawe/react-redux-cms#readme"
+  "homepage": "https://github.com/elnawe/react-redux-cms#readme",
+  "devDependencies": {
+    "webpack": "^2.6.1"
+  }
 }
