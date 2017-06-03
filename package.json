@@ -1,0 +1,22 @@
+{
+  "name": "react-redux-cms",
+  "version": "0.0.1",
+  "description": "web-based game engine Javascript",
+  "main": "main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elnawe/react-redux-cms.git"
+  },
+  "author": "Nahuel J. Sacchetti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elnawe/react-redux-cms/issues"
+  },
+  "homepage": "https://github.com/elnawe/react-redux-cms#readme"
+}
