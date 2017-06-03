@@ -4,6 +4,7 @@ var WebpackDevServer = require('webpack-dev-server');
 
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
+    inline: true,
     hot: true,
     historyApiFallback: true,
     quiet: false,

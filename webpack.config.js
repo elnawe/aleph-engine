@@ -4,19 +4,21 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 
-var BUILD_DIR = path.join(__dirname, '/dist/');
+var BUILD_DIR = path.resolve(__dirname, 'dist');
 var EXCLUDE_FOLDERS = [
     /node_modules/,
     /dist/
 ];
-var UI_DIR = path.join(__dirname, '/ui/');
+var UI_DIR = path.resolve(__dirname, 'ui');
 
 module.exports = {
-    entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        path.join(__dirname, 'main.js')
-    ],
+    entry: {
+        main: [
+            'webpack-dev-server/client?http://localhost:8080',
+            'webpack/hot/dev-server',
+            path.join(UI_DIR, 'main.js')
+        ]
+    },
     output: {
         path: BUILD_DIR,
         filename: '[name].js',
@@ -27,13 +29,17 @@ module.exports = {
             template: path.join(UI_DIR, 'index.html'),
             inject: 'body',
             filename: 'index.html'
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     module: {
         loaders: [
             {
                 test: /\.js?$/,
                 exclude: EXCLUDE_FOLDERS,
+                include: [
+                    UI_DIR
+                ],
                 loader: 'babel-loader'
             },
             {
