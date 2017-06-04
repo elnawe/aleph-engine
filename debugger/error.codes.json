@@ -1,0 +1,6 @@
+{
+    "ERROR__TYPE_ERROR": "[TYPE ERROR]"
+    "ERROR__VALUE_ERROR": "[VALUE ERROR]"
+    "ERROR__IS_NOT_OBJECT": "should be an object",
+    "ERROR__IS_NOT_STRING": "should be an string"
+}

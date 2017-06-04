@@ -1,11 +1,12 @@
-* TODO Soul Adventure
+* Structure
+** TODO Stores
+   * Manage information
+   * State-machine
+   * Could be Redux
+** Canvas
+** Sprites
+** GameObject
+** Animation
+** Player (?)
 
-** Description
-   Web based game engine dedicated to create RPG-like games with a lot of text but not to much UI.
-
-** Mission
-   Replicate what I did in http://github.com/elnawe/soul-adventure with new features and utilizing the power of Javascript.
-
-** Features
-   * Easy-to-use interface to manage game options.
-   * Fully customizable game.
+** Typescript vs. React

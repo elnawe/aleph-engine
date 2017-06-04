@@ -9,15 +9,17 @@ var EXCLUDE_FOLDERS = [
     /node_modules/,
     /dist/
 ];
-var UI_DIR = path.resolve(__dirname, 'ui');
 var CORE_DIR = path.resolve(__dirname, 'core');
+var DEBUGGER_DIR = path.resolve(__dirname, 'debugger');
+var SANDBOX_DIR = path.resolve(__dirname, 'sandbox');
+
 
 module.exports = {
     entry: {
         main: [
             'webpack-dev-server/client?http://localhost:8080',
             'webpack/hot/dev-server',
-            path.join(UI_DIR, 'main.js')
+            path.join(SANDBOX_DIR, 'main.js')
         ]
     },
     output: {
@@ -27,7 +29,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(UI_DIR, 'index.html'),
+            template: path.join(SANDBOX_DIR, 'index.html'),
             inject: 'body',
             filename: 'index.html'
         }),
@@ -43,9 +45,10 @@ module.exports = {
                 exclude: EXCLUDE_FOLDERS,
                 include: [
                     CORE_DIR,
-                    UI_DIR
+                    DEBUGGER_DIR,
+                    SANDBOX_DIR
                 ],
-                loader: 'babel-loader'
+                loader: ['babel-loader']
             },
             {
                 // TODO: Run plugin to extract this CSS.
