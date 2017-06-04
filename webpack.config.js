@@ -10,6 +10,7 @@ var EXCLUDE_FOLDERS = [
     /dist/
 ];
 var UI_DIR = path.resolve(__dirname, 'ui');
+var CORE_DIR = path.resolve(__dirname, 'core');
 
 module.exports = {
     entry: {
@@ -30,7 +31,10 @@ module.exports = {
             inject: 'body',
             filename: 'index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_PATH': './'
+        })
     ],
     module: {
         loaders: [
@@ -38,6 +42,7 @@ module.exports = {
                 test: /\.js?$/,
                 exclude: EXCLUDE_FOLDERS,
                 include: [
+                    CORE_DIR,
                     UI_DIR
                 ],
                 loader: 'babel-loader'
