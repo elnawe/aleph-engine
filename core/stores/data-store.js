@@ -3,7 +3,7 @@
 // this logic could probably be changed with Redux.
 import _ from 'lodash';
 import { EventEmitter } from 'events';
-import errorHandler from '../../debugger/error-handler';
+import errorHandler from 'debugger/error-handler';
 
 const localStore = window.localStorage; // refactor this to its own library
 

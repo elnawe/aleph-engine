@@ -13,7 +13,6 @@ var CORE_DIR = path.resolve(__dirname, 'core');
 var DEBUGGER_DIR = path.resolve(__dirname, 'debugger');
 var SANDBOX_DIR = path.resolve(__dirname, 'sandbox');
 
-
 module.exports = {
     entry: {
         main: [
@@ -56,6 +55,12 @@ module.exports = {
                 exclude: EXCLUDE_FOLDERS,
                 loader: 'style-loader!css-loader?module&localIdentName=[name]---[local]---[hash:base64:5]!sass-loader'
             }
+        ]
+    },
+    resolve: {
+        modules: [
+            path.resolve('./'),
+            path.resolve('./node_modules')
         ]
     }
 };
