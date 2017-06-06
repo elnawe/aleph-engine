@@ -4,8 +4,6 @@
 import _ from 'lodash';
 import { EventEmitter } from 'events';
 
-const localStore = window.localStorage; // refactor this to its own library
-
 export default class DataStore extends EventEmitter {
 
     constructor (props) {
@@ -14,18 +12,18 @@ export default class DataStore extends EventEmitter {
         this.state = _.extend({}, props.state, JSON.parse(localStore.getItem(this.name)));
     }
 
-    set update_state (updateInformation) {
+    set update_state (o) {
         // @Information: updateInformation is an object that contains at least 2 keys.
         // It contains state which is the new information to update in the store and also
         // contains quietly, a boolean that triggers changes if it's not true.
-        _.extend(this.state, updateInformation.state);
-        if (!updateInformation.quietly) this.handle_store_change();
+        _.extend(this.state, o.state);
+        if (!o.quietly) this.handle_store_change();
     }
 
     handle_store_change () {
         // @Information: If change is emitted this method should save new information to storage.
         // This method should know the platform for which store it's calling.
         this.emit('change');
-        localStore.setItem(this.name, JSON.stringify(this.state));
+        // localStore.setItem(this.name, JSON.stringify(this.state)); // TODO: move this to Persistence
     }
 };
