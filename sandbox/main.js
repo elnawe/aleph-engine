@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Sprite from '../core/sprite/sprite';
-import DataStore from '../core/stores/data-store';
+import Sprite from 'sprites/sprite';
+import DataStore from 'stores/data-store';
 
 const testStore = new DataStore({name: 'Test', state: {charName:'',health: '',position:''}});
 

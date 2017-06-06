@@ -1,8 +1,13 @@
 * Structure
 ** TODO Stores
-   * Manage information
-   * State-machine
-   * Could be Redux
+   - Manage information
+   - State-machine
+   - Could be Redux
+*** TODO Support web storage
+*** Check Cordova/Electron way to store data
+   - Do I want to use Cordova/Electron for this engine to work on mobile and desktop?
+   - Take care of this when mobile/desktop is planed
+*** Add storage debugging
 ** Canvas
 ** Sprites
 ** GameObject
