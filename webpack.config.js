@@ -1,24 +1,23 @@
 'use strict';
 
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
-var BUILD_DIR = path.resolve(__dirname, 'dist');
-var EXCLUDE_FOLDERS = [
-    /node_modules/,
-    /dist/
-];
-var CORE_DIR = path.resolve(__dirname, 'core');
-var DEBUGGER_DIR = path.resolve(__dirname, 'debugger');
-var SANDBOX_DIR = path.resolve(__dirname, 'sandbox');
+const BUILD_DIR = path.resolve(__dirname, 'dist');
+const CANVAS_DIR = path.resolve(__dirname, 'canvas');
+const CORE_DIR = path.resolve(__dirname, 'core');
+const DEBUGGER_DIR = path.resolve(__dirname, 'debugger');
+const EXCLUDE_FOLDERS = [/node_modules/, /dist/];
+const SANDBOX_DIR = path.resolve(__dirname, 'sandbox');
 
 module.exports = {
     entry: {
         main: [
             'webpack-dev-server/client?http://localhost:8080',
             'webpack/hot/dev-server',
-            path.join(SANDBOX_DIR, 'main.js')
+            path.join(SANDBOX_DIR, 'main.ts')
         ]
     },
     output: {
@@ -35,19 +34,21 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_PATH': './'
-        })
+        }),
+        new CheckerPlugin()
     ],
     module: {
         loaders: [
             {
-                test: /\.js?$/,
+                test: /\.ts$/,
                 exclude: EXCLUDE_FOLDERS,
                 include: [
+                    CANVAS_DIR,
                     CORE_DIR,
                     DEBUGGER_DIR,
                     SANDBOX_DIR
                 ],
-                loader: ['babel-loader']
+                loader: ['awesome-typescript-loader']
             },
             {
                 // TODO: Run plugin to extract this CSS.
@@ -58,9 +59,10 @@ module.exports = {
         ]
     },
     resolve: {
+        extensions: ['.js', '.ts'],
         modules: [
             path.resolve('./'),
-            path.resolve('./node_modules')
+            path.resolve(__dirname, 'node_modules')
         ]
     }
 };
