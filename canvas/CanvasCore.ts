@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 class CanvasCore {
     canvas: HTMLCanvasElement;
 
@@ -13,15 +15,14 @@ class CanvasCore {
         return this.canvas.getContext('2d');
     }
 
-    createCanvas(settings: CanvasSettings): HTMLCanvasElement {
+    private createCanvas(settings: CanvasSettings): HTMLCanvasElement {
         // @Information: This function passes default properties to canvas and returns
         // a <canvas> Node.
         let c: HTMLCanvasElement = document.createElement('canvas');
-        let dimensions = settings.dimensions;
 
-        c.setAttribute('id', settings.name);
-        c.setAttribute('height', dimensions.height.toString());
-        c.setAttribute('width', dimensions.width.toString());
+        _.forEach(settings, (v: string, k: string) => {
+            c.setAttribute(k, v);
+        });
 
         return c;
     }
